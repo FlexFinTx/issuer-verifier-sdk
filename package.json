@@ -1,0 +1,32 @@
+{
+  "name": "issuer-verifier-sdk",
+  "version": "1.0.0",
+  "description": "A JS/TS SDK for interacting with the Flex Issuer+Verifier API",
+  "main": "./dist/index.js",
+  "repository": "git@github.com:FlexFinTx/issuer-verifier-sdk.git",
+  "author": "Haardik <hhaardik@uwaterloo.ca>",
+  "license": "Apache2.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-dev ./src/index.ts",
+    "start": "tsc && node ./dist/index.js",
+    "lint": "eslint . --ext .ts"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@typescript-eslint/eslint-plugin": "^3.6.1",
+    "@typescript-eslint/parser": "^3.6.1",
+    "eslint": "^7.4.0",
+    "husky": "^4.2.5",
+    "ts-node-dev": "^1.0.0-pre.52",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {}
+}
