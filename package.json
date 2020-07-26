@@ -28,5 +28,9 @@
     "ts-node-dev": "^1.0.0-pre.52",
     "typescript": "^3.9.7"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@mattrglobal/bbs-signatures": "^0.3.0",
+    "@types/superagent": "^4.1.8",
+    "superagent": "^5.3.1"
+  }
 }
