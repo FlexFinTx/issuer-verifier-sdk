@@ -1,0 +1,29 @@
+# Workflow Name
+name: Issuer Verifier SDK
+
+# Workflow trigger on "pushes" to repo
+on: [push]
+
+# All jobs part of the workflow
+jobs:
+  build:
+    # Job Name
+    name: Test
+    # Job runs on Linux
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{matrix.node-version}}
+
+      - run: npm install
+      - run: npm run lint
+      # Tests haven't been created yet
+      #- run: npm run test
