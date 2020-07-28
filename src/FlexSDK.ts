@@ -6,6 +6,7 @@ import {
 } from "./types";
 import APICall from "./APICall";
 import querystring from "querystring";
+import { IFilterObject } from "./types/IFilterObject";
 
 class FlexSDK {
   private ivapiUrl: string;
@@ -16,7 +17,7 @@ class FlexSDK {
     this.apiKey = apiKey;
   }
 
-  async getIssuedCredentials(filterObj?: any) {
+  async getIssuedCredentials(filterObj?: IFilterObject) {
     let endpoint = "/credentials/savedCredentials";
     //filterObj can be of types: 1: id & 2: type; if no filters, returns all issued credentials
     if (filterObj) {
