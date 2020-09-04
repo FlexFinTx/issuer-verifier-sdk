@@ -7,6 +7,7 @@ import {
 import APICall from "./APICall";
 import querystring from "querystring";
 import { IFilterObject } from "./types/IFilterObject";
+import { SuperAgentRequest } from "superagent";
 
 class FlexSDK {
   private ivapiUrl: string;
@@ -17,7 +18,9 @@ class FlexSDK {
     this.apiKey = apiKey;
   }
 
-  async getIssuedCredentials(filterObj?: IFilterObject) {
+  async getIssuedCredentials(
+    filterObj?: IFilterObject
+  ): Promise<SuperAgentRequest> {
     let endpoint = "/credentials/savedCredentials";
     //filterObj can be of types: 1: id & 2: type; if no filters, returns all issued credentials
     if (filterObj) {
@@ -32,7 +35,9 @@ class FlexSDK {
     return request.send();
   }
 
-  async issueNewCredential(credential: IVerifiableCredential) {
+  async issueNewCredential(
+    credential: IVerifiableCredential
+  ): Promise<SuperAgentRequest> {
     const request = new APICall(
       this.ivapiUrl,
       "/credentials/issueCredential",
@@ -43,7 +48,9 @@ class FlexSDK {
     return request.send();
   }
 
-  async verifySignedCredential(credential: IVerifiableCredential) {
+  async verifySignedCredential(
+    credential: IVerifiableCredential
+  ): Promise<SuperAgentRequest> {
     const request = new APICall(
       this.ivapiUrl,
       "/verifier/credentials",
@@ -54,7 +61,9 @@ class FlexSDK {
     return request.send();
   }
 
-  async verifySignedPresentation(presentation: IVerifiablePresentation) {
+  async verifySignedPresentation(
+    presentation: IVerifiablePresentation
+  ): Promise<SuperAgentRequest> {
     const request = new APICall(
       this.ivapiUrl,
       "/verifier/presentations",
@@ -68,7 +77,7 @@ class FlexSDK {
   async generatePresentationRequest(
     callbackId: string,
     jsonldFrame: IJsonLDFrame
-  ) {
+  ): Promise<SuperAgentRequest> {
     const objToSend = { callbackId: callbackId, jsonldFrame: jsonldFrame };
     const request = new APICall(
       this.ivapiUrl,
@@ -80,7 +89,9 @@ class FlexSDK {
     return request.send();
   }
 
-  async getPresentationSubmission(callbackId: string) {
+  async getPresentationSubmission(
+    callbackId: string
+  ): Promise<SuperAgentRequest> {
     const request = new APICall(
       this.ivapiUrl,
       `/verifier/polling/${callbackId}`,

@@ -9,7 +9,7 @@ class APICall {
   private baseUrl: string;
   private url: string;
   private method: EAcceptedHttpMethods;
-  private data?: object;
+  private data?: Record<string, unknown>;
   private apiKey: string;
 
   constructor(
@@ -17,7 +17,7 @@ class APICall {
     url: string,
     method: EAcceptedHttpMethods,
     apiKey: string,
-    data?: object
+    data?: Record<string, unknown>
   ) {
     this.baseUrl = baseUrl;
     this.url = url;
@@ -26,7 +26,7 @@ class APICall {
     if (data) this.data = data;
   }
 
-  async send() {
+  async send(): Promise<superagent.SuperAgentRequest> {
     if (this.method === EAcceptedHttpMethods.GET) {
       return superagent.get(`${this.baseUrl}${this.url}`);
     } else if (this.method === EAcceptedHttpMethods.POST) {

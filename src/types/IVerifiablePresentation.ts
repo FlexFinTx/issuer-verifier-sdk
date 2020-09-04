@@ -1,7 +1,7 @@
 import { IVerifiableCredential } from "./IVerifiableCredential";
 import { IProof } from "./IProof";
 
-export interface IVerifiablePresentation {
+export interface IVerifiablePresentation extends Record<string, unknown> {
   "@context": string[];
   type: string[];
   holder?: string;
